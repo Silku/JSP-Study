@@ -3,13 +3,10 @@ package myhome;
 import java.util.ArrayList;
 
 
-
 public class LoginData {
 
 		ArrayList<UserData> user = new ArrayList<UserData>();
-		
-		LoginData login;
-		private static LoginData Login;
+		private static LoginData Login = new LoginData();
 		
 		public LoginData() {
 			Userdata ud = new UserData();
