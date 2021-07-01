@@ -1,0 +1,232 @@
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=Noto+Sans+KR:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
+#info_container{
+    display:flex;
+    flex-flow: nowrap;
+    justify-content: center;
+    width:800px;
+    height: 100%;
+    margin: 0px auto;
+}
+#info_as_container{
+    display:flex;
+    box-sizing: border-box;
+    width :300px;
+    height: 100%;
+    background-color: rgb(0, 95, 200);
+    flex-direction: column;
+    /* justify-content: flex-end; */
+    /* justify-content: flex-start; */
+    /* box-sizing : border-box;  */
+}
+.info_aside_section{
+    position: relative;
+    display: flex;
+    width: 200px;
+    height: 140px;
+    /* margin : 0px 0px 0px 100px; */
+    box-sizing: border-box;
+    justify-content: flex-end;
+    /* align-content: flex-end;  */
+}
+.info_aside_section:after{
+    position : absolute;
+    content: '';
+    bottom: 0px ;
+    left: 25%;
+    width: 75%;
+    border-top: 1px solid rgb(110, 110, 110);
+}
+.info_aside_section ul{
+    color : white;
+    list-style-type: none;
+    padding : 0 30px 0 0px;
+    text-align: end;
+}
+#info_aside_section_none{
+    border-top:none;
+    height : 180px;
+}
+.info_aside_section_name{
+    font-family: 'Noto Sans KR', sans-serif;
+}
+.info_aside_section_name2{
+    font-family: 'Noto Sans KR', sans-serif;
+    color:rgb(194, 194, 194);
+    font-size: 0.7em;
+}
+/* 아래는 메인섹션 css영역 */
+.info_main_section_container{
+    padding : 0 0 0 80px;
+    display:flex;
+    width:100%;
+    background-color: rgb(240, 254, 255);
+    flex-direction: column;
+    /* align-content: flex-end; */
+}
+
+#info_main_section_none{
+    display: flex;
+    margin:0px auto;
+    border-top:none;
+    width: 600px;
+    height : 180px;
+}
+#info_main_section_none ul{
+    display: inline-flex;
+    list-style-type: none;
+    font-weight: bolder;
+    color: rgb(15, 90, 145);
+}
+#info_mainimg{
+    display: inline-flex;
+    margin : 30px 0 0 0px;
+    padding :30px auto;
+    border-radius: 50%;
+    border-style: solid ;
+    border-color: rgb(0, 95, 200);
+}
+#info_hi{
+    margin : 60px 0 0 0px;
+    font-size: 30px;
+    font-family: 'Black Han Sans', sans-serif;
+}
+.info_text_left{
+    display:flex;
+}
+.info_text_middle{
+    margin : 0px 5px 0px 0px;
+    padding : 0px 1px 0px 0px;   
+}
+.info_text_middle ul li{
+    color:rgb(170, 170, 170);
+}
+.info_text_right{
+    padding:0px 20px 0px 0px;
+}
+.info_text_right ul li{
+    color:rgb(180,180,180);
+}
+.info_main_section{
+    display:flex;
+    border-top: 1px solid rgb(110, 110, 110);
+    width: 80%;
+    height: 140px; 
+    box-sizing: border-box;
+    justify-content: space-between;
+    /* flex-direction: row;
+    flex-flow: nowrap; */
+    /* justify-content: flex-end; */
+    /* box-sizing : border-box;  */
+    /* text-align: end;  */
+}
+/* 기본사항 css 영역 */
+#info_personal_info ul li{
+    font-size: 1em;
+    display: inline-block;
+    padding :2px 2px 10px 10px;
+}
+.info_main_section ul li{
+    display:flex;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size:0.7em;
+    flex-flow : wrap;    
+}
+/* 아티클 css 영역(학력 사항 아래로 쭉)-------------- */
+.info_main_section3{
+    display:flex;
+    border-top: 1px solid rgb(110, 110, 110);
+    width: 80%;
+    height: 140px; 
+    box-sizing: border-box;
+    flex-direction: column;
+}
+.article_row{
+    display : flex;
+    flex-direction: row;
+    justify-content: space-between;
+    position:relative;
+    padding : 2px 30px 6px 30px;
+}
+.article_row_box{
+    height: 100%;
+    box-sizing:border-box;
+    padding : 0px 10px 0px 10px;
+    /* display:inline-block; */
+    /* width: 150%; */
+}
+.article_row li {
+    font-size: 0.8em;
+    color: black;
+    font-family: 'Noto Sans KR', sans-serif;
+    list-style-type: none;
+    /* background-color: blue; */
+    /* position:absolute; */
+} 
+.article_row_dot{
+    font-size: 0.8em;
+    font-family: 'Noto Sans KR', sans-serif;
+    color :rgb(208, 232, 235);
+    line-height: 1em;
+}
+.article_row_dot2{
+    font-size: 0.8em;
+    font-family: 'Noto Sans KR', sans-serif;
+    color :rgb(208, 232, 235);
+    line-height: 34px;
+}
+.text_deco1{
+    display: inline-block;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 0.7em;
+    color: rgb(204, 204, 204);
+}
+.info_main_section ul{
+    margin: 10px auto;
+    padding : 10px auto;
+    color : rgb(0, 0, 0);
+    list-style-type: none;
+    font-size: 1.2em;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+/* 기술사항 섹션영역 */
+.info_main_section2{
+    display:flex;
+    border-top: 1px solid rgb(110, 110, 110);
+    width: 80%;
+    height: 140px; 
+    box-sizing: border-box;
+    justify-content: space-between;
+    align-items: center;
+    padding : 2px 30px 6px 30px;
+}
+.info_main_section2 img{
+    border-radius: 50%;
+    width:3em;
+    height: 3em;
+}
+.skills_box{
+    display: flex;
+    align-items: center;
+}
+.skills_text_box{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.skills_text {
+    font-size: 0.8em;
+    color: black;
+    list-style-type: none;
+    /* background-color: blue; */
+    /* position:absolute; */
+} 
+.skills_deco{
+    display: inline-block;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 0.7em;
+    color: rgb(204, 204, 204);
+}
