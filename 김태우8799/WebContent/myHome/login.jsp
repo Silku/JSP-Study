@@ -1,5 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%> 
+<%
+	String loginId = request.getParameter("loginId");
+	if(loginId == null){
+		loginId =" ";
+	}
+%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,7 +23,7 @@
   </div>
   <div id="container">
     <div id="login_content">
-        <form method="post" action="loginTest.jsp">
+        <form method="post" action="loginReponse.jsp">
             <div class="id_area">
                 <div class="input_row">
                     <span class="input_box">
