@@ -7,12 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<h1>response example1</h1>
 	<%
-		response.setHeader("Pragma", "no-cache");
-		if(request.getProtocol().equals("HTTP/1.1")){
-			response.setHeader("Cache-Control", "no-store");
-		}
+		response.sendRedirect("response1_1.jsp");
 	%>
-	response1.jsp가 response1_1.jsp로 변경이 되었습니다.
 </body>
 </html>
