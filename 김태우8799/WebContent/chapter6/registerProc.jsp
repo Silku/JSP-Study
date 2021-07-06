@@ -21,7 +21,7 @@
 					<tr align="center" bgcolor="#996600">
 					<td colspan="3">
 						<font color="#FFFFFF">
-							<b>
+							<b> 
 							<%=regBean.getName() %>
 							<jsp:getProperty name="regBean" property="name" />
 							회원님이 작성하신 내용입니다. 확인해 주세요.
