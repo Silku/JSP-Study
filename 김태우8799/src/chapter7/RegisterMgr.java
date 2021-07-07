@@ -1,6 +1,8 @@
 package chapter7;
 
 import java.sql.*;
+import java.util.ArrayList;
+
 
 public class RegisterMgr {
  private	Connection con = null;
@@ -67,3 +69,4 @@ public class RegisterMgr {
 			}
 		}return list;
 	}
+}
