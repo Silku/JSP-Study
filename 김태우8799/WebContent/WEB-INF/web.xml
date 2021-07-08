@@ -20,12 +20,25 @@
   xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
                       http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
   version="3.1"
-  metadata-complete="true">
+  metadata-complete="false">
 
   <display-name>Welcome to Tomcat</display-name>
   <description>
      Welcome to Tomcat
   </description>
+<!--   
+  <servlet>
+  	<servlet-name>ExampleServlet01</servlet-name>
+  	서블릿파일명
+  	<servlet-class>chapter8.ExampleServlet01</servlet-class>
+  	import 경로
+  </servlet>
+  <servlet-mapping>
+  	mapping 경로
+  	<servlet-name>ExampleServlet01</servlet-name>
+  	<url-pattern>/chapter8/exampleservlet01</url-pattern>
+  </servlet-mapping>
+   -->
   <servlet>
 	<servlet-name>default</servlet-name>
 	<servlet-class>org.apache.catalina.servlets.DefaultServlet</servlet-class>
