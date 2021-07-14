@@ -1,9 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%
-   String loginID = request.getParameter("loginID");
-%>
-
+    pageEncoding="UTF-8"%> 
 <!DOCTYPE html>
 <html lang="en">
 
@@ -26,14 +22,14 @@
                 <a href="index.html" id="mainlogo"> <i id="logo" class="fab fa-microblog"></i> TW's Blog</a>
             </nav>
         </header>   
-        <form action="#" method="get">
+        <form action="#" method="post">
             <!-- 네이버 회원가입 창을 본떠서 -->
             <div id="join_content">
                 <h1 id = mainhello> 회원 가입 페이지</h1>
                 <div class="join_items">
                     <label class="join_label">아이디</label>
                     <span class="join_input">
-                        <input type="text" id="id_text" name="id"class="join_text">
+                        <input type="text" id="id_text" class="join_text" name="user_id">
                         <span class="join_input_text">@naver.com</span>
                     </span>
                     <div id="id_warning" class="join_warning">
@@ -43,7 +39,7 @@
                 <div class="join_items">
                     <label class="join_label">비밀번호</label>
                     <span class="join_input">
-                        <input type="password" id="pwd_text" name="pwd" class="join_text">
+                        <input type="password" id="pwd_text" name="user_pwd" class="join_text">
                         <span class="join_input_text"></span>
                     </span>
                     <div class="join_warning">
@@ -51,9 +47,9 @@
                     </div>
                 </div>
                 <div class="join_items">
-                    <label class="join_label">비밀번호 재확인</label>
+                    <label class="join_label" >비밀번호 재확인</label>
                     <span class="join_input">
-                        <input type="password" class="join_text">
+                        <input type="password" class="join_text" name="user_repwd">
                         <span class="join_input_text"></span>
                     </span>
                     <div class="join_warning">
@@ -75,12 +71,12 @@
                     <div class="bir_warp">
                         <div class="bir_yy">
                             <span class="ps_box">
-                                <input type="text" class="join_text">
+                                <input type="text" class="join_text" name="birth_year">
                             </span>
                         </div>
                         <div class="bir_mm">
                             <span class="ps_box">
-                                <select class="bir_select">
+                                <select class="bir_select" name="birth_month">
                                     <option value="0">월</option>
                                     <option value="1">1</option>
                                     <option value="2">2</option>
@@ -99,7 +95,7 @@
                         </div>
                         <div class="bir_dd">
                             <span class="ps_box">
-                                <input type="text" class="join_text">
+                                <input type="text" class="join_text" name ="birth_day">
                             </span>
                         </div>
                     </div>
@@ -125,6 +121,12 @@
             </div>
         </footer>
     </div>
+    <script> 
+    	const join_id = document.querySelector("id_text");
+    	join_id.onBlur = () => {
+    		alert("test");
+    	}
+    </script>
     <script src = "js/join.js"></script>
 </body>
 
