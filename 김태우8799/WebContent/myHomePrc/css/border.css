@@ -1,0 +1,51 @@
+.border_contain {
+  margin: 30px auto;
+  width: 1000px;
+}
+#border_icon {
+  display: inline-block;
+  margin-right: 5px;
+}
+.border_body {
+  display: flex;
+  justify-content: center;
+}
+.border_table {
+  display: inline-block;
+  width: 900px;
+}
+.border_table tr {
+  /* display: inline; */
+  height: 30px;
+}
+.border_table tr th {
+  border-top: 2px solid rgb(0, 160, 255);
+  background: rgb(243, 243, 243);
+}
+.border_table tr td {
+  border-bottom: 1px solid grey;
+  text-align: center;
+  background-color: white;
+}
+.border_table tr .border_index {
+  width: 90px;
+}
+.border_table tr .border_title {
+  width: 450px;
+}
+.border_table tr .border_writer {
+  width: 135px;
+}
+.border_table tr .border_date {
+  width: 135px;
+}
+.border_table tr .border_count {
+  width: 90px;
+}
+.this_page {
+  margin-right: 50px;
+  text-align: right;
+}
+.select_page {
+  text-align: center;
+}
