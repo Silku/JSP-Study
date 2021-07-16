@@ -1,34 +1,35 @@
 package jspEx;
 
 public class UserBean {
-	private String id;
-	private String pwd;
-	private String name;
-	private String birthday;
+	private String user_id;
+	private String user_pwd;
+	private String user_name;
+	private String user_birthday;
 	
-	public String getId() {
-		return id;
+	public String getUser_id() {
+		return user_id;
 	}
-	public void setId(String id) {
-		this.id = id;
+	public void setUser_id(String user_id) {
+		this.user_id = user_id;
 	}
-	public String getPwd() {
-		return pwd;
+	public String getUser_pwd() {
+		return user_pwd;
 	}
-	public void setPwd(String pwd) {
-		this.pwd = pwd;
+	public void setUser_pwd(String user_pwd) {
+		this.user_pwd = user_pwd;
 	}
-	public String getName() {
-		return name;
+	public String getUser_name() {
+		return user_name;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setUser_name(String user_name) {
+		this.user_name = user_name;
 	}
-	public String getBirthday() {
-		return birthday;
+	public String getUser_birthday() {
+		return user_birthday;
 	}
-	public void setBirthday(String birthday) {
-		this.birthday = birthday;
+	public void setUser_birthday(String user_birthday) {
+		this.user_birthday = user_birthday;
 	}
+
 
 }

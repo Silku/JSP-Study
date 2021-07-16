@@ -1,18 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
+<%
+	request.setCharacterEncoding("UTF-8");
+%>
+
 <jsp:useBean id="joinMgr" class="jspEx.JoinMgrPool"></jsp:useBean>
 <jsp:useBean id="userBean" class="jspEx.UserBean"></jsp:useBean>
 <jsp:setProperty name="userBean" property="*" />
 <%
-	request.setCharacterEncoding("UTF-8");
 	String user_id = "";
-	String user_pwd ="";
-	String user_repwd ="";
-	String user_name ="";
-	String user_year ="";
-	String user_month ="";
-	String user_day ="";
+	String user_pwd = "";
+	String user_repwd = "";
+	String user_name = "";
+	String user_year = "";
+	String user_month = "";
+	String user_day = "";
 	String idstatus = "";
 	String submitflag = "";
 	
@@ -20,9 +22,7 @@
 		user_id = request.getParameter("user_id");
 	}
 	
-	
-	
-	if(request.getParameter("submitflag") != null && request.getParameter("submitflag") == "true"){
+	if(request.getParameter("submitflag") != null && request.getParameter("submitflag").equals("true")){
 		submitflag = request.getParameter("submitflag");
 		if(request.getParameter("user_pwd") != null){
 			user_pwd = request.getParameter("user_pwd");
@@ -32,6 +32,18 @@
 		}
 		if(request.getParameter("user_name") != null){
 			user_name = request.getParameter("user_name");
+		}
+		if(request.getParameter("user_year") != null){
+			user_year = request.getParameter("user_year");
+		}
+		if(request.getParameter("user_month") != null){
+			user_month = request.getParameter("user_month");
+		}
+		if(request.getParameter("user_day") != null){
+			user_day = request.getParameter("user_day");
+		}
+		if(request.getParameter("idstatus") != null){
+			idstatus = request.getParameter("idstatus");
 		}
 		
 		userBean.setUser_birthday(user_year + "-" + user_month + "-" + user_day);
@@ -43,7 +55,7 @@
 	}
 	
 	boolean idCheckStatus = joinMgr.idCheck(user_id);
-%>  
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -72,7 +84,7 @@
                         <label class="join_label">아이디</label>
                         <span class="join_input">
                         	<input type="hidden" id="idstatus" name="idstatus" value="<%=idCheckStatus %>">
-                            <input type="text" id="id_text" class="join_text" name="user_id" value="<%=user_id%>">
+                            <input type="text" id="id_text" class="join_text" name="user_id" value="<%=user_id %>" >
                             <span class="join_input_text">@naver.com</span>
                         </span>
                         <div id="id_warning" class="join_warning">
@@ -82,7 +94,7 @@
                     <div class="join_items">
                         <label class="join_label">비밀번호</label>
                         <span class="join_input">
-                            <input type="password" class="join_text" id="pwd_text" name ="user_pwd"> 
+                            <input type="password" class="join_text" id="pwd_text" name="user_pwd">
                             <span class="join_input_text"></span>
                         </span>
                         <div class="join_warning">
@@ -92,7 +104,7 @@
                     <div class="join_items">
                         <label class="join_label">비밀번호 재확인</label>
                         <span class="join_input">
-                            <input type="password" class="join_text" id="repwd_text"  name ="user_repwd">
+                            <input type="password" class="join_text" id="repwd_text" name="user_repwd">
                             <span class="join_input_text"></span>
                         </span>
                         <div class="join_warning">
@@ -102,7 +114,7 @@
                     <div class="join_items">
                         <label class="join_label">이름</label>
                         <span class="join_input">
-                            <input type="text" class="join_text" id="name_text" name ="user_name">
+                            <input type="text" class="join_text" id="name_text" name="user_name">
                             <span class="join_input_text"></span>
                         </span>
                         <div class="join_warning">
@@ -114,22 +126,22 @@
                         <div class="bir_warp">
                             <div class="bir_yy">
                                 <span class="ps_box">
-                                    <input type="text" class="join_text" id ="birth_year"  name ="user_year">
+                                    <input type="text" class="join_text" id="birth_year" name="user_year">
                                 </span>
                             </div>
                             <div class="bir_mm">
                                 <span class="ps_box">
-                                    <select class="bir_select" id="birth_month"  name ="user_month">
+                                    <select class="bir_select" id="birth_month" name="user_month">
                                         <option value="0">월</option>
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
-                                        <option value="5">5</option>
-                                        <option value="6">6</option>
-                                        <option value="7">7</option>
-                                        <option value="8">8</option>
-                                        <option value="9">9</option>
+                                        <option value="01">1</option>
+                                        <option value="02">2</option>
+                                        <option value="03">3</option>
+                                        <option value="04">4</option>
+                                        <option value="05">5</option>
+                                        <option value="06">6</option>
+                                        <option value="07">7</option>
+                                        <option value="08">8</option>
+                                        <option value="09">9</option>
                                         <option value="10">10</option>
                                         <option value="11">11</option>
                                         <option value="12">12</option>
@@ -138,7 +150,7 @@
                             </div>
                             <div class="bir_dd">
                                 <span class="ps_box">
-                                    <input type="text" class="join_text" id="birth_day"  name ="user_day">
+                                    <input type="text" class="join_text" id="birth_day" name="user_day">
                                 </span>
                             </div>
                         </div>
@@ -146,7 +158,7 @@
                             <p class="warning_text">필수 정보입니다.</p>
                         </div>
                     </div>
-					<input type="hidden" id ="submitflag" name="submitflag">
+					<input type="hidden" id="submitflag" name="submitflag" value="false"> 
                     <button type="button" class="join_button">
                         <span class="button_text">가입하기</span>
                     </button>
@@ -165,73 +177,74 @@
             </div>
         </footer>
     </div>
-		<script>
+	<script>
 		const submitflag = document.querySelector("#submitflag");
-		submitflag.value = "false";
+	
+		const id_text = document.querySelector("#id_text");
+		const joinform = document.querySelector("#joinform");
+		id_text.onblur = () => {
+			joinform.submit();
+		}
+		const idstatus = document.querySelector("#idstatus");
+		if(idstatus.value == "true"){
+			alert(id_text.value + "(은)는 이미 존재하는 아이디 입니다.");
+			id_text.value="";
+		}
+		
+		const submitbtn = document.querySelector(".join_button");
+		const pwd_text = document.querySelector("#pwd_text");
+		const repwd_text = document.querySelector("#repwd_text");
+		const name_text = document.querySelector("#name_text");
+		const birth_year = document.querySelector("#birth_year");
+		const birth_month = document.querySelector("#birth_month");
+		const birth_day = document.querySelector("#birth_day");
 		
 		
-	 	const id_text = document.querySelector("#id_text");
-	 	const joinform = document.querySelector("#joinform");
-	 	id_text.onblur = () => {
-	 		joinform.submit();
-	 	}
-	 	const idstatus = document.querySelector("#idstatus");
-	 	if(idstatus.value == "true"){
-	 			alert(id_text.value + "(은)는 이미 존재하는 아이디입니다.");
-	 			id_text.value ="";
-	 	}
-	 	
-	 	const submitbtn = document.querySelector(".join_button");	
-	 	const pwd_text = document.querySelector("#pwd_text");	
-	 	const repwd_text = document.querySelector("#repwd_text");	
-	 	const name_text = document.querySelector("#name_text");	
-	 	const birth_year = document.querySelector("#birth_year");	
-	 	const birth_month = document.querySelector("#birth_month");	
-	 	const birth_day = document.querySelector("#birth_day");	
-	 	
-
-	 	submitbtn.onclick = () => {
-	 			if(idstatus.value == "true"){
-		 			alert(id_text.value + "(은)는 이미 존재하는 아이디입니다.");
-		 			return;
-	 			}else if(id_text.value == null || id_text.value == ""){
-	 				alert("아이디를 입력해 주세요");
-	 				return;
-	 			}else if(pwd_text.value == null || pwd_text.value == ""){
-	 				alert("비밀번호는 공백을 입력할 수 없습니다.");
-	 				return;
-	 			}else if(repwd_text.value == null || repwd_text.value == ""){
-	 				alert("비밀번호는 공백을 입력할 수 없습니다.");
-	 				return;
-	 			}else if(pwd_text.value != repwd_text.value){
-	 				alert("비밀번호가 일치하지 않습니다. 다시 입력하세요.");
-	 				return;
-	 			}else if(name_text.value == null || name_text.value ==""){
-	 				alert("이름을 입력해주세요.");
-	 				return;
-	 			}else if(birth_year.value == null || birth_year.value ==""){
-	 				alert("년도를 입력해 주세요");
-	 				return;
-	 			}else if(birth_month.value == 0){
-	 				alert("월을 선택해 주세요");
-	 				return;
-	 			}else if(birth_day.value == null || birth_day.value ==""){
-	 				alert("일자를 입력해 주세요.");
-	 				return;
-	 			}
-	 			submitflag.value = "ture";
-	 			joinform.submit();
-	 	}
-	 	
-	 	<!--
-	 	const pwd_text = document.querySelector("#pwd_text");
-	 	const repwd_text = document.querySelector("#repwd_text");
-	 	if(pwd_text == null || pwd_text ==""){
-	 			alert("비밀번호는 공백을 입력할 수 없습니다.");
-	 	}else(pwd_text != null){
-	 		
-	 	}
-	 	-->
+		submitbtn.onclick = () => {
+			if(idstatus.value == "true"){
+				alert(id_text.value + "(은)는 이미 존재하는 아이디 입니다.");
+				return;
+			}else if(id_text.value == "" || id_text.value == null){
+				alert("아이디를 입력해 주세요.");
+				return;
+			}else if(pwd_text.value == null || pwd_text.value == ""){
+				alert("비밀번호는 공백을 입력할 수 없습니다.");
+				return;
+			}else if(repwd_text.value == null || repwd_text.value == ""){
+				alert("비밀번호는 공백을 입력할 수 없습니다.");
+				return;
+			}else if(pwd_text.value != repwd_text.value){
+				alert("비밀번호가 일치하지 않습니다. 다시 입력하세요.");
+				return;
+			}else if(name_text.value == null || name_text.value == ""){
+				alert("이름을 입력해 주세요.");
+				return;
+			}else if(birth_year.value == null || birth_year.value == ""){
+				alert("년도를 입력해 주세요.(예: 2021)");
+				return;
+			}else if(birth_month.value == 0){
+				alert("월을 선택해 주세요.");
+				return;
+			}else if(birth_day.value == null || birth_day.value == ""){
+				alert("일자를 입력해 주세요.(예: 1 ~ 31)");
+				return;
+			}
+			
+			submitflag.value = "true";
+			joinform.submit();
+		}
+		
+		
 	</script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
