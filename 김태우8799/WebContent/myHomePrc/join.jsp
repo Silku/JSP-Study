@@ -1,61 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%
-	request.setCharacterEncoding("UTF-8");
-%>
 
-<jsp:useBean id="joinMgr" class="jspEx.JoinMgrPool"></jsp:useBean>
-<jsp:useBean id="userBean" class="jspEx.UserBean"></jsp:useBean>
-<jsp:setProperty name="userBean" property="*" />
-<%
-	String user_id = "";
-	String user_pwd = "";
-	String user_repwd = "";
-	String user_name = "";
-	String user_year = "";
-	String user_month = "";
-	String user_day = "";
-	String idstatus = "";
-	String submitflag = "";
-	
-	if(request.getParameter("user_id") != null){
-		user_id = request.getParameter("user_id");
-	}
-	
-	if(request.getParameter("submitflag") != null && request.getParameter("submitflag").equals("true")){
-		submitflag = request.getParameter("submitflag");
-		if(request.getParameter("user_pwd") != null){
-			user_pwd = request.getParameter("user_pwd");
-		}
-		if(request.getParameter("user_repwd") != null){
-			user_repwd = request.getParameter("user_repwd");
-		}
-		if(request.getParameter("user_name") != null){
-			user_name = request.getParameter("user_name");
-		}
-		if(request.getParameter("user_year") != null){
-			user_year = request.getParameter("user_year");
-		}
-		if(request.getParameter("user_month") != null){
-			user_month = request.getParameter("user_month");
-		}
-		if(request.getParameter("user_day") != null){
-			user_day = request.getParameter("user_day");
-		}
-		if(request.getParameter("idstatus") != null){
-			idstatus = request.getParameter("idstatus");
-		}
-		
-		userBean.setUser_birthday(user_year + "-" + user_month + "-" + user_day);
-		
-		boolean insertStatus = joinMgr.joinInsert(userBean);
-		if(insertStatus == true){
-			response.sendRedirect("login.html");
-		}
-	}
-	
-	boolean idCheckStatus = joinMgr.idCheck(user_id);
-%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -78,13 +23,13 @@
             </nav>
         </header>
         <main>
-            <form id="joinform" action="join.jsp" method="post">
+            <form id="joinform" action="joinProc" method="post">
                 <div id="join_content">
                     <div class="join_items">
                         <label class="join_label">아이디</label>
                         <span class="join_input">
-                        	<input type="hidden" id="idstatus" name="idstatus" value="<%=idCheckStatus %>">
-                            <input type="text" id="id_text" class="join_text" name="user_id" value="<%=user_id %>" >
+                        	<input type="hidden" id="idstatus" name="idstatus" value="<%=request.getParameter("idstatus") %>">
+                            <input type="text" id="id_text" class="join_text" name="user_id" value="<%=request.getParameter("user_id") %>" >
                             <span class="join_input_text">@naver.com</span>
                         </span>
                         <div id="id_warning" class="join_warning">
