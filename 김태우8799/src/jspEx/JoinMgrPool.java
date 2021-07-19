@@ -19,7 +19,7 @@ public class JoinMgrPool {
 		try {
 			pool = DBConnectionMgr.getInstance();
 		}catch(Exception e) {
-			System.out.println("¿À·ù: DBConnection Pool ½ÇÆÐ.");
+			System.out.println("ì˜¤ë¥˜: DBConnection Pool ì‹¤íŒ¨.");
 		}
 	}
 	
@@ -59,8 +59,6 @@ public class JoinMgrPool {
 		PreparedStatement pstmt = null;
 		String sql = null;
 		
-		
-		
 		try {
 			con = pool.getConnection();
 			sql = "insert into user_mst(user_id, user_pwd, user_name, user_birthday, createdate, updatedate)"
@@ -84,3 +82,10 @@ public class JoinMgrPool {
 	}
 	
 }
+
+
+
+
+
+
+

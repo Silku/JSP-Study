@@ -20,7 +20,7 @@ public class BorderMgrPool {
 		try {
 			pool = DBConnectionMgr.getInstance();
 		}catch(Exception e) {
-			System.out.println("¿À·ù: DBConnection Pool ½ÇÆÐ.");
+			System.out.println("ì˜¤ë¥˜: DBConnection Pool ì‹¤íŒ¨.");
 		}
 	}
 	
@@ -30,7 +30,6 @@ public class BorderMgrPool {
 		ResultSet rs = null;
 		String sql = null;
 		ArrayList<BorderMstBean> list = new ArrayList<BorderMstBean>();
-		
 		try {
 			con = pool.getConnection();
 			sql = "select * from border_mst";

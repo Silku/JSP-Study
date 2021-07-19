@@ -19,16 +19,15 @@ public class LoginMgrPool {
 		try {
 			pool = DBConnectionMgr.getInstance();
 		}catch(Exception e) {
-			System.out.println("¿À·ù: DBConnection Pool ½ÇÆÐ.");
+			System.out.println("ì˜¤ë¥˜: DBConnection Pool ì‹¤íŒ¨.");
 		}
 	}
 	
-	public int loginCheck(String user_id, String user_pwd) {
+	public int loginIdCheck(String user_id, String user_pwd) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		String sql = null;
-		
 		int flag = 2;
 		
 		try {
@@ -46,7 +45,7 @@ public class LoginMgrPool {
 			pool.freeConnection(con, pstmt, rs);
 		}
 		
-		if(flag != 0) {
+		if(flag != 2) {
 			try {
 				con = pool.getConnection();
 				sql = "select count(*) from user_mst where user_id = ? and user_pwd = ?";
@@ -62,8 +61,6 @@ public class LoginMgrPool {
 			}finally {
 				pool.freeConnection(con, pstmt, rs);
 			}
-		}else {
-			return 2;
 		}
 		return flag;
 	}

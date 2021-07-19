@@ -30,6 +30,8 @@ public class UserBean {
 	public void setUser_birthday(String user_birthday) {
 		this.user_birthday = user_birthday;
 	}
-
-
+	
+	
+	
+	
 }

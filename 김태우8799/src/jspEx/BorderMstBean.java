@@ -45,4 +45,5 @@ public class BorderMstBean {
 		this.border_count = border_count;
 	}
 	
+	
 }
