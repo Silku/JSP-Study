@@ -9,10 +9,10 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class Index
+ * Servlet implementation class Border
  */
-@WebServlet("/jspEx/index")
-public class Index extends HttpServlet {
+@WebServlet("/jspEx/border")
+public class Border extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
@@ -31,7 +31,7 @@ public class Index extends HttpServlet {
 			request.setAttribute("user_name", sessionBean.getUser_name());
 			request.getRequestDispatcher("header_login.jsp").include(request, response);
 		}
-		request.getRequestDispatcher("index.jsp").include(request,response);
+		request.getRequestDispatcher("border.jsp").include(request,response);
 		request.getRequestDispatcher("footer_main.jsp").include(request,response);
 	
 	}

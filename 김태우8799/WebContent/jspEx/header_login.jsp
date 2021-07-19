@@ -9,6 +9,7 @@
     <title>Junil blog</title>
     <script src="https://kit.fontawesome.com/c3df4d7d1c.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/border.css">
 </head>
 <body>
     <div id="container">
@@ -20,11 +21,11 @@
                 <a href="index.html" id="mainlogo"><i id="logo" class="fab fa-adn"></i> Junil blog</a>
                 <ul> 
                     <a href="#"><li>블로그 소개</li></a>
-                    <a href="border.html"><li>게시글</li></a>
+                    <a href="border"><li>게시글</li></a>
                 </ul>
                 <div>
-                    <span>김준일</span>
-                    <a href="logout" class="__links">회원가입</a>
+                    <span><%=request.getAttribute("user_name") %></span>
+                    <a href="logout" class="__links">로그아웃</a>
                 </div>
                 
             </nav>

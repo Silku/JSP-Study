@@ -15,11 +15,12 @@
     </div>
     <div id="container">
         <div id="login_content">
-            <form method="get">
+            <form id="loginform" method="post" actio="login">
+            	<input type="hidden" id="loginflag" name="loginflag" value="<%=request.getAttribute("loginflag") %>">
                 <div class="id_area">
                     <div class="input_row">
                         <span class="input_box">
-                            <input type="text" id="id" class="input_text" placeholder="아이디">
+                            <input type="text" id="id" class="input_text" placeholder="아이디" name="user_id"value="<%=request.getAttribute("user_id") %>">
                         </span>
                     </div>
                 </div>
@@ -28,18 +29,18 @@
                 <div class="pwd_area">
                     <div class="input_row">
                         <span class="input_box">
-                            <input type="password" id="pwd" class="input_text" placeholder="비밀번호">
+                            <input type="password" id="pwd" class="input_text" placeholder="비밀번호" name="user_pwd">
                         </span>
                     </div>
                 </div>
                 <div id="pwd_error" class="error">비밀번호를 입력해 주세요.</div>
-
-                <input type="submit" class="input_submit" value="로그인">
+				<input type="hidden" id="submitflag" name="submitflag" value="false">
+                <input type="button" class="input_submit" value="로그인">
 
                 <div class="check_info">
                     <div class="login_check">
                         <span>
-                            <input type="checkbox" id="id_check">
+                            <input type="checkbox" id="id_check" name="id_check_status">
                             <label class="login_ch_text">로그인 상태 유지</label>
                         </span>
                         <a>IP 보안 OFF</a>
