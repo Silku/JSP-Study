@@ -24,7 +24,7 @@
                     <a href="border"><li>게시글</li></a>
                 </ul>
                 <div>
-                    <a href="<%=request.getAttribute("user_name") %>" class="__links">로그인</a>
+                    <a href="login" class="__links">로그인</a>
                     <a href="join" class="__links">회원가입</a>
                 </div>
                 
