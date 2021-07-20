@@ -36,7 +36,11 @@
                         <span><%= request.getAttribute("page")%></span> / <span><%= request.getAttribute("totalPage")%></span> pages
                     </div>
                     <div class="select_page">
-                        <span><a href=#><i class="fas fa-angle-left"></i></a></span>
+                    	<%
+                    		int prePage = ((Integer)request.getAttribute("pageStart") - 1 == 0 ? 1: (Integer)request.getAttribute("pageStart") -1);
+                    		int nextPage = ((Integer)request.getAttribute("pageEnd")-1 == (Integer)request.getAttribute("totalPage") ? (Integer)request.getAttribute("pageEnd")-1 : (Integer)request.getAttribute("pageEnd")) ;
+                    	%>
+                        <span><a href=border?page=<%=prePage%>><i class="fas fa-angle-left"></i></a></span>
                         <%
                         	for(int i = (Integer)request.getAttribute("pageStart"); i < (Integer)request.getAttribute("pageEnd"); i++){
                         %> 
@@ -44,7 +48,7 @@
                         <%
                         	}
                         %>
-                        <span><a href=#><i class="fas fa-angle-right"></i></a></span>
+                        <span><a href=border?page=<%=nextPage%>><i class="fas fa-angle-right"></i></a></span>
                         
                     </div>
                 </div>
