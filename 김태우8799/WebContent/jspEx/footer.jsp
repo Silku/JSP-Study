@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
-        <footer>
+    
+		<footer>
             <div id="foot">
                 <!-- 이름, 연락처, 주소, 이메일 -->
                 <ul>
@@ -12,5 +12,9 @@
                 </ul>
             </div>
         </footer>
+    </div>
+    <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="js/swiper.js"></script>
 </body>
 </html>

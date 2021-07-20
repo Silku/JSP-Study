@@ -7,20 +7,22 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src="https://kit.fontawesome.com/c3df4d7d1c.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/login.css" />
 </head>
 <body>
-    <div id="header">
-        <a href="index.html">NAVER</a>
-    </div>
+    <nav id="header">
+        <a href="index" id="mainlogo"><i id="logo" class="fab fa-adn"></i> Junil blog</a>
+    </nav>
     <div id="container">
         <div id="login_content">
-            <form id="loginform" method="post" actio="login">
+            <form id="loginform" method="post" action="login">
             	<input type="hidden" id="loginflag" name="loginflag" value="<%=request.getAttribute("loginflag") %>">
                 <div class="id_area">
                     <div class="input_row">
                         <span class="input_box">
-                            <input type="text" id="id" class="input_text" placeholder="아이디" name="user_id"value="<%=request.getAttribute("user_id") %>">
+                            <input type="text" id="id" class="input_text" placeholder="아이디" name="user_id" value="<%=request.getAttribute("user_id") %>">
                         </span>
                     </div>
                 </div>
@@ -35,12 +37,12 @@
                 </div>
                 <div id="pwd_error" class="error">비밀번호를 입력해 주세요.</div>
 				<input type="hidden" id="submitflag" name="submitflag" value="false">
-                <input type="button" class="input_submit" value="로그인">
+                <input type="button" class="input_submit" value="로그인"></botton>
 
                 <div class="check_info">
                     <div class="login_check">
                         <span>
-                            <input type="checkbox" id="id_check" name="id_check_status">
+                            <input type="checkbox" id="id_check">
                             <label class="login_ch_text">로그인 상태 유지</label>
                         </span>
                         <a>IP 보안 OFF</a>

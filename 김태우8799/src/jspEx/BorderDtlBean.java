@@ -1,24 +1,18 @@
 package jspEx;
 
-public class BorderMstBean {
+public class BorderDtlBean {
 	private int border_code;
-	private int border_index;
 	private String border_title;
-	private String border_writer;
+	private String border_content;
+	private String writer_name;
+	private String writer_ip;
 	private String border_date;
 	private int border_count;
-	
 	public int getBorder_code() {
 		return border_code;
 	}
 	public void setBorder_code(int border_code) {
 		this.border_code = border_code;
-	}
-	public int getBorder_index() {
-		return border_index;
-	}
-	public void setBorder_index(int border_index) {
-		this.border_index = border_index;
 	}
 	public String getBorder_title() {
 		return border_title;
@@ -26,11 +20,23 @@ public class BorderMstBean {
 	public void setBorder_title(String border_title) {
 		this.border_title = border_title;
 	}
-	public String getBorder_writer() {
-		return border_writer;
+	public String getBorder_content() {
+		return border_content;
 	}
-	public void setBorder_writer(String border_writer) {
-		this.border_writer = border_writer;
+	public void setBorder_content(String border_content) {
+		this.border_content = border_content;
+	}
+	public String getWriter_name() {
+		return writer_name;
+	}
+	public void setWriter_name(String writer_name) {
+		this.writer_name = writer_name;
+	}
+	public String getWriter_ip() {
+		return writer_ip;
+	}
+	public void setWriter_ip(String writer_ip) {
+		this.writer_ip = writer_ip;
 	}
 	public String getBorder_date() {
 		return border_date;

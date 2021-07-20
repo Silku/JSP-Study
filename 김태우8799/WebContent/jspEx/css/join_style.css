@@ -31,7 +31,7 @@ body {
 .join_items {
     display: flex;
     flex-direction: column;
-    font-size: 1.2em;
+    font-size: 0.9em;
 }
 
 .join_label {
@@ -63,7 +63,7 @@ body {
     font-size: 0.9em;
 }
 .join_warning {
-    display: block;
+    display: none;
 }
 .warning_text {
     font-size: 0.8em;

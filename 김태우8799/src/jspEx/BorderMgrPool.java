@@ -20,29 +20,30 @@ public class BorderMgrPool {
 		try {
 			pool = DBConnectionMgr.getInstance();
 		}catch(Exception e) {
-			System.out.println("오류: DBConnection Pool 실패.");
+			System.out.println("�삤瑜�: DBConnection Pool �떎�뙣.");
 		}
 	}
 	
-	public ArrayList<BorderMstBean> getBorderList() {
+	public ArrayList<BorderDtlBean> getBorderList() {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		String sql = null;
-		ArrayList<BorderMstBean> list = new ArrayList<BorderMstBean>();
+		ArrayList<BorderDtlBean> list = new ArrayList<BorderDtlBean>();
 		try {
 			con = pool.getConnection();
-			sql = "select * from border_mst";
+			sql = "select * from border_dtl order by border_code desc";
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
-				BorderMstBean bean = new BorderMstBean();
+				BorderDtlBean bean = new BorderDtlBean();
 				bean.setBorder_code(rs.getInt(1));
-				bean.setBorder_index(rs.getInt(2));
-				bean.setBorder_title(rs.getString(3));
-				bean.setBorder_writer(rs.getString(4));
-				bean.setBorder_date(rs.getString(5));
-				bean.setBorder_count(rs.getInt(6));
+				bean.setBorder_title(rs.getString(2));
+				bean.setBorder_content(rs.getString(3));
+				bean.setWriter_name(rs.getString(4));
+				bean.setWriter_ip(rs.getString(5));
+				bean.setBorder_date(rs.getString(6));
+				bean.setBorder_count(rs.getInt(7));
 				list.add(bean);
 			}
 		}catch (Exception e) {

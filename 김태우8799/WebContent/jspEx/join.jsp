@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>회원가입</title>
+    <title>로그인</title>
     <script src="https://kit.fontawesome.com/c3df4d7d1c.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/join_style.css" />
@@ -19,7 +19,7 @@
                 <!-- 로고(로고이미지, 홈페이지 이름) -->
                 <!-- 메뉴(자기소개, 게시글) -->
                 <!-- 링크(로그인, 회원가입) -->
-                <a href="index.html" id="mainlogo"><i id="logo" class="fab fa-adn"></i> Junil blog</a>
+                <a href="index" id="mainlogo"><i id="logo" class="fab fa-adn"></i> Junil blog</a>
             </nav>
         </header>
         <main>
@@ -28,9 +28,9 @@
                     <div class="join_items">
                         <label class="join_label">아이디</label>
                         <span class="join_input">
-                        	<input type="hidden" id="idstatus" name="idstatus" value="<%=request.getParameter("idstatus") %>">
-                            <input type="text" id="id_text" class="join_text" name="user_id" value="<%=request.getParameter("user_id") %>" >
-                            <span class="join_input_text">@naver.com</span>
+                        	<input type="hidden" id="idstatus" name="idstatus" value="<%=request.getAttribute("idstatus") %>">
+                            <input type="text" id="id_text" class="join_text" name="user_id" value="<%=request.getAttribute("user_id") %>" >
+                            <label class="join_input_text">@junilblog.com</label>
                         </span>
                         <div id="id_warning" class="join_warning">
                             <p class="warning_text">필수 정보입니다.</p>
@@ -39,7 +39,7 @@
                     <div class="join_items">
                         <label class="join_label">비밀번호</label>
                         <span class="join_input">
-                            <input type="password" class="join_text" id="pwd_text" name="user_pwd">
+                            <input type="password" class="join_text" id="pwd_text" name="user_pwd" value="<%=request.getAttribute("user_pwd") %>">
                             <span class="join_input_text"></span>
                         </span>
                         <div class="join_warning">
@@ -49,7 +49,7 @@
                     <div class="join_items">
                         <label class="join_label">비밀번호 재확인</label>
                         <span class="join_input">
-                            <input type="password" class="join_text" id="repwd_text" name="user_repwd">
+                            <input type="password" class="join_text" id="repwd_text" name="user_repwd" value="<%=request.getAttribute("user_repwd") %>">
                             <span class="join_input_text"></span>
                         </span>
                         <div class="join_warning">
@@ -59,7 +59,7 @@
                     <div class="join_items">
                         <label class="join_label">이름</label>
                         <span class="join_input">
-                            <input type="text" class="join_text" id="name_text" name="user_name">
+                            <input type="text" class="join_text" id="name_text" name="user_name" value="<%=request.getAttribute("user_name") %>">
                             <span class="join_input_text"></span>
                         </span>
                         <div class="join_warning">
@@ -71,12 +71,12 @@
                         <div class="bir_warp">
                             <div class="bir_yy">
                                 <span class="ps_box">
-                                    <input type="text" class="join_text" id="birth_year" name="user_year">
+                                    <input type="text" class="join_text" id="birth_year" name="user_year" value="<%=request.getAttribute("user_year") %>">
                                 </span>
                             </div>
                             <div class="bir_mm">
                                 <span class="ps_box">
-                                    <select class="bir_select" id="birth_month" name="user_month">
+                                    <select class="bir_select" id="birth_month" name="user_month" value="<%=request.getAttribute("user_month") %>">
                                         <option value="0">월</option>
                                         <option value="01">1</option>
                                         <option value="02">2</option>
@@ -95,7 +95,7 @@
                             </div>
                             <div class="bir_dd">
                                 <span class="ps_box">
-                                    <input type="text" class="join_text" id="birth_day" name="user_day">
+                                    <input type="text" class="join_text" id="birth_day" name="user_day" value="<%=request.getAttribute("user_day") %>">
                                 </span>
                             </div>
                         </div>
@@ -122,65 +122,7 @@
             </div>
         </footer>
     </div>
-	<script>
-		const submitflag = document.querySelector("#submitflag");
-	
-		const id_text = document.querySelector("#id_text");
-		const joinform = document.querySelector("#joinform");
-		id_text.onblur = () => {
-			joinform.submit();
-		}
-		const idstatus = document.querySelector("#idstatus");
-		if(idstatus.value == "true"){
-			alert(id_text.value + "(은)는 이미 존재하는 아이디 입니다.");
-			id_text.value="";
-		}
-		
-		const submitbtn = document.querySelector(".join_button");
-		const pwd_text = document.querySelector("#pwd_text");
-		const repwd_text = document.querySelector("#repwd_text");
-		const name_text = document.querySelector("#name_text");
-		const birth_year = document.querySelector("#birth_year");
-		const birth_month = document.querySelector("#birth_month");
-		const birth_day = document.querySelector("#birth_day");
-		
-		
-		submitbtn.onclick = () => {
-			if(idstatus.value == "true"){
-				alert(id_text.value + "(은)는 이미 존재하는 아이디 입니다.");
-				return;
-			}else if(id_text.value == "" || id_text.value == null){
-				alert("아이디를 입력해 주세요.");
-				return;
-			}else if(pwd_text.value == null || pwd_text.value == ""){
-				alert("비밀번호는 공백을 입력할 수 없습니다.");
-				return;
-			}else if(repwd_text.value == null || repwd_text.value == ""){
-				alert("비밀번호는 공백을 입력할 수 없습니다.");
-				return;
-			}else if(pwd_text.value != repwd_text.value){
-				alert("비밀번호가 일치하지 않습니다. 다시 입력하세요.");
-				return;
-			}else if(name_text.value == null || name_text.value == ""){
-				alert("이름을 입력해 주세요.");
-				return;
-			}else if(birth_year.value == null || birth_year.value == ""){
-				alert("년도를 입력해 주세요.(예: 2021)");
-				return;
-			}else if(birth_month.value == 0){
-				alert("월을 선택해 주세요.");
-				return;
-			}else if(birth_day.value == null || birth_day.value == ""){
-				alert("일자를 입력해 주세요.(예: 1 ~ 31)");
-				return;
-			}
-			
-			submitflag.value = "true";
-			joinform.submit();
-		}
-		
-		
-	</script>
+	<script src="js/join.js"></script>
 </body>
 </html>
 

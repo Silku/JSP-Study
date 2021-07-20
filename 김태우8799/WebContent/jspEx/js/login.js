@@ -1,9 +1,3 @@
-const loginflag = document.querySelector('#loginflag');
-if(loginflag.value == "0"){
-	alert("비밀번호가 잘못되었습니다.");
-}else if(loginflag.value == "2"){
-	alert("존재하지 않는 아이디입니다.");
-}
 const input_id = document.querySelector('#id');
 input_id.onblur = () => {
     if(input_id.value.length == 0){
@@ -35,6 +29,7 @@ submit_button.onclick = () => {
             pwd_error.style.display = "none";
 			submitflag.value = "true";
 			loginform.submit();
+			
         }
     }
 }
