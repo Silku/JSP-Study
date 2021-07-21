@@ -3,6 +3,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
         <main>
+        <!-- 깃테스트용!!!! -->
             <article class="border_contain">
                 <div class="border_header"><h1><i class="fas fa-align-left" id="border_icon"></i> 게 시 글</h1></div>
                 <div class="border_body">
@@ -21,7 +22,7 @@
               			%>
                         <tr>
                             <td class="border_index"><%=bean.getBorder_code() %></td>
-                            <td class="border_title"><a href="#"><%=bean.getBorder_title() %></a></td>
+                            <td class="border_title"><a href="borderdtl?border_code=<%=bean.getBorder_code()%>"><%=bean.getBorder_title() %></a></td>
                             <td class="border_writer"><%=bean.getWriter_name() %></td>
                             <td class="border_date"><%=bean.getBorder_date() %></td>
                             <td class="border_count"><%=bean.getBorder_count() %></td>
