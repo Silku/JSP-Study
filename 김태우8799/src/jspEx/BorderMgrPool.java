@@ -53,4 +53,35 @@ public class BorderMgrPool {
 		}
 		return list;
 	}
+//	el태그를 활용한 bean을 사용하기 위한 로직
+	public BorderDtlBean getContent(int border_code) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = null;
+		ArrayList<BorderDtlBean> list = new ArrayList<BorderDtlBean>();
+		BorderDtlBean bean = new BorderDtlBean();
+		try {
+			con = pool.getConnection();
+			sql = "select * from border_dtl where border_code = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, border_code);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				bean.setBorder_code(rs.getInt(1));
+				bean.setBorder_title(rs.getString(2));
+				bean.setBorder_content(rs.getString(3));
+				bean.setWriter_name(rs.getString(4));
+				bean.setWriter_ip(rs.getString(5));
+				bean.setBorder_date(rs.getString(6));
+				bean.setBorder_count(rs.getInt(7));
+				list.add(bean);
+			}
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			pool.freeConnection(con, pstmt, rs);
+		}
+		return bean;
+	}
 }

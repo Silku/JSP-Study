@@ -16,6 +16,8 @@ a {
 .border_body {
     display: flex;
     justify-content: center;
+    flex-direction: column;
+    padding : 50px;
 }
 
 .border_table {

@@ -12,5 +12,6 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="D:/김준일강사수업/Tomcat8.5/lib/jsp-api.jar"/>
 	<classpathentry kind="lib" path="D:/김준일강사수업/Tomcat8.5/lib/servlet-api.jar"/>
+	<classpathentry kind="lib" path="C:/Users/ITPS/git/JSP-Study/김태우8799/WebContent/WEB-INF/lib/jstl-1.2.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

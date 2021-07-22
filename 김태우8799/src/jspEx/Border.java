@@ -50,8 +50,11 @@ public class Border extends HttpServlet {
 //		삼항 연산자 활용
 		int totalPage = (totalListCount%10 == 0 ? totalListCount/10 : totalListCount/10 + 1);
 		int pageStart = (page%5 == 0 ? page -4 :  page - (page%5) + 1);
-		int pageEnd = (pageStart+4 <= totalPage ? pageStart+4 : totalPage) + 1;
-		
+		int pageEnd = (pageStart+4 <= totalPage ? pageStart+4 : totalPage);
+
+//		***이 부분 JSP 스크립틀릿 태그 쓸때와 다름!! 아래는 jsp형식일때임, EL태그 쓸때는 jsp형식으로 할때 1값 더줬던걸 없애버림. 
+//		int pageEnd = (pageStart+4 <= totalPage ? pageStart+4 : totalPage) + 1;
+//      ***		
 		request.setAttribute("borderList", borderList);
 		request.setAttribute("page", page);
 		request.setAttribute("totalPage", totalPage);
