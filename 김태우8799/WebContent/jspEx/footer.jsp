@@ -16,5 +16,6 @@
     <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script src="js/swiper.js"></script>
+    <script src="js/borderInsert.js"></script>
 </body>
 </html>

@@ -59,7 +59,6 @@ public class BorderMgrPool {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		String sql = null;
-		ArrayList<BorderDtlBean> list = new ArrayList<BorderDtlBean>();
 		BorderDtlBean bean = new BorderDtlBean();
 		try {
 			con = pool.getConnection();
@@ -75,7 +74,6 @@ public class BorderMgrPool {
 				bean.setWriter_ip(rs.getString(5));
 				bean.setBorder_date(rs.getString(6));
 				bean.setBorder_count(rs.getInt(7));
-				list.add(bean);
 			}
 		}catch (Exception e) {
 			e.printStackTrace();
@@ -84,4 +82,77 @@ public class BorderMgrPool {
 		}
 		return bean;
 	}
+	
+	public BorderDtlBean getPreBorderCode(int border_code) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = null;
+		BorderDtlBean bean = new BorderDtlBean();
+		try {
+			con = pool.getConnection();
+			sql = "select max(border_code), border_title from border_dtl where border_code < ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, border_code);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				bean.setBorder_code(rs.getInt(1));
+				bean.setBorder_title(rs.getString(2));
+			}
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			pool.freeConnection(con, pstmt, rs);
+		}
+		return bean;
+	}
+	
+	public BorderDtlBean getNextBorderCode(int border_code) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = null;
+		BorderDtlBean bean = new BorderDtlBean();
+		try {
+			con = pool.getConnection();
+			sql = "select min(border_code), border_title from border_dtl where border_code > ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, border_code);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				bean.setBorder_code(rs.getInt(1));
+				bean.setBorder_title(rs.getString(2));
+			}
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			pool.freeConnection(con, pstmt, rs);
+		}
+		return bean;
+	}
+	
+	public boolean borderInsert(BorderDtlBean borderDtlBean) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		String sql = null;
+		
+		try {
+			con = pool.getConnection();
+			sql = "insert into border_dtl values(0, ?, ?, ?, ?, now(), 0 ,now(), now())";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, borderDtlBean.getBorder_title());
+			pstmt.setString(2, borderDtlBean.getBorder_content());
+			pstmt.setString(3, borderDtlBean.getWriter_name());
+			pstmt.setString(4, borderDtlBean.getWriter_ip());
+			pstmt.executeUpdate();
+		}catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}finally {
+			pool.freeConnection(con, pstmt);
+		}
+		return true;
+		
+	}
+	
 }

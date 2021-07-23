@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/border.css" />
     <link rel="stylesheet" href="css/borderdtl.css" />
+    <link rel="stylesheet" href="css/borderinsert.css" />
 </head>
 <body>
     <div id="container">

@@ -7,6 +7,8 @@
     height:30px;
 }
 .borderDtl_table th, td{
+    box-sizing: border-box;
+    padding :0px 12px 0px 5px;
    border:1px solid rgb(223,223,223); 
    width:225px;
    text-align: center;
@@ -22,7 +24,8 @@
     margin:10px 0px;
 }
 .border_button button{
-    width:60px;
+    margin: 0px 5px;
+    width:70px;
     height:30px;
     font-size: 0.9em;
     font-weight: 400;
@@ -31,11 +34,7 @@
     border:none;
     outline: none;
 
-    animation: ani01;
-    animation-delay: 2s;
-    animation-duration: 10s;
-    /* animation-direction: alternate; */
-    animation-iteration-count: infinite; 
+
 }
 .border_button button:hover{
     background-color: rgb(29, 198, 255);
@@ -46,7 +45,7 @@
     width:675px;
 }
 
-
+/* 
 @keyframes  ani01{
     from{
         position : absolute; 
@@ -66,3 +65,4 @@
         top:100px; left:1000px;
     }
 }    
+     */   

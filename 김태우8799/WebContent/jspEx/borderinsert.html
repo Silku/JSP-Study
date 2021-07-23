@@ -1,14 +1,68 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Junil blog</title>
+    <script src="https://kit.fontawesome.com/c3df4d7d1c.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css" />
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/border.css" />
+    <link rel="stylesheet" href="css/borderdtl.css" />
+    <link rel="stylesheet" href="css/borderinsert.css" />
 </head>
 <body>
-    <main>
+    <div id="container">
+        <header id="mainheader">
+            <nav id="navbar">
+                <!-- 로고(로고이미지, 홈페이지 이름) -->
+                <!-- 메뉴(자기소개, 게시글) -->
+                <!-- 링크(로그인, 회원가입) -->
+                <a href="index" id="mainlogo"><i id="logo" class="fab fa-adn"></i> Junil blog</a>
+                <ul> 
+                    <a href="#"><li>블로그소개</li></a>
+                    <a href="border"><li>게시글</li></a>
+                </ul>
+                <div>
+                    <a href="login" class="__links">로그인</a>
+                    <a href="joinProc" class="__links">회원가입</a>
+                </div>
+            </nav>
+        </header>
         
-    </main>
+        <main>
+            <form method="post" action="borderinsert">
+                <article class="border_contain">
+                    <div class="border_header"><h1><i class="fas fa-align-left" id="border_icon"></i> 게 시 글</h1></div>
+                    <div class="border_body">
+                        <table class="borderDtl_table">
+                            <tr> 
+                                <th>제목</th>
+                                <td colspan="3">
+                                    <input type ="text" class="border_text" name="border_title">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>작성자</th>
+                                <td>test</td>
+                                <th>첨부파일</th>
+                                <td>test</td>
+                            </tr>
+                        </table>
+                        <div>
+                            <textarea class="content_textarea" name="content_textarea"></textarea>
+                        </div>
+                        <div class="border_button">
+                            <button >작성하기</button>
+                            <button type="reset">다시작성</button>
+                        </div>
+                    </div>
+                </article>
+            </form>
+        </main>
+        
+    </div>
 </body>
 </html>

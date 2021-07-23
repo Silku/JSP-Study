@@ -6,6 +6,17 @@
         <!-- 일일히 다 고치기 힘들어서 jsp파일은 border(jsp style backup).jsp로 백업해둠!,  java scr내에 border.java에도 변경사항있음 ! -->
             <article class="border_contain">
                 <div class="border_header"><h1><i class="fas fa-align-left" id="border_icon"></i> 게 시 글</h1></div>
+                <c:choose>
+                	<c:when test="${empty userBean }">
+                		<c:set var="display" value="none"></c:set>
+                	</c:when>
+                	<c:otherwise>
+                		<c:set var="display" value="flex"></c:set>
+                	</c:otherwise>
+                </c:choose>
+                <div class="border_insert_button" style="display:${display };">
+                	<button onclick="location.href='borderinsert'">글쓰기</button>
+                </div>
                 <div class="border_body">
                     <table class="border_table">
                         <tr class="row_header">
@@ -18,7 +29,7 @@
               			<c:forEach var = "bean" items="${borderList }">
 	              			<tr>
 	                        	<td class="border_index">${bean.border_code }</td>
-	                            <td class="border_title"><a href="borderdtl?border_code=${bean.border_code }?page=${page}">${bean.border_title }</a></td>
+	                            <td class="border_title"><a href="borderdtl?border_code=${bean.border_code }&page=${page}">${bean.border_title }</a></td>
 	                            <td class="border_writer">${bean.writer_name }</td>
 	                            <td class="border_date">${bean.border_date }</td>
 	                            <td class="border_count">${bean.border_count }</td>

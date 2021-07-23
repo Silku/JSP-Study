@@ -12,12 +12,34 @@ a {
     display: inline-block;
     margin: 0px 10px 20px 50px;
 }
+.border_insert_button{
+    display:flex;
+    justify-content: flex-end;
+    margin-left:50px;
+    margin-bottom:5px;
+    width:900px;
+}
+.border_insert_button button{
+    margin: 0px 5px;
+    width:70px;
+    height:30px;
+    font-size: 0.9em;
+    font-weight: 400;
+    background-color: deepskyblue;
+    color: rgb(247, 247, 247);
+    border:none;
+    outline: none;
+}
+.border_insert_button button:hover{
+    background-color: rgb(29, 198, 255);
+    color: white;    
+}
 
 .border_body {
     display: flex;
     justify-content: center;
     flex-direction: column;
-    padding : 50px;
+    padding : 00px 50px;
 }
 
 .border_table {
