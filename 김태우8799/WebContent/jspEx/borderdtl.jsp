@@ -24,9 +24,7 @@
                             <td colspan="3">test</td>
                         </tr>
                     </table>
-                    <pre class ="border_content">
-						${contentBean.border_content }
-                    </pre>
+                    <pre class ="border_content">${contentBean.border_content }</pre>
                     <div class="border_button">
                         <button onclick="location.href='border?page=${page }'">목록</button>
                     </div>

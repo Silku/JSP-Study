@@ -91,7 +91,8 @@ public class BorderMgrPool {
 		BorderDtlBean bean = new BorderDtlBean();
 		try {
 			con = pool.getConnection();
-			sql = "select max(border_code), border_title from border_dtl where border_code < ?";
+			sql = "select border_code, border_title from border_dtl where border_code = (select max(border_code) from border_dtl where border_code < ?)";
+//			이처럼서브쿼리 쓰면 데이터 처리가 느려질수있다..
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, border_code);
 			rs = pstmt.executeQuery();
@@ -115,7 +116,7 @@ public class BorderMgrPool {
 		BorderDtlBean bean = new BorderDtlBean();
 		try {
 			con = pool.getConnection();
-			sql = "select min(border_code), border_title from border_dtl where border_code > ?";
+			sql = "select border_code, border_title from border_dtl where border_code = (select min(border_code) from border_dtl where border_code > ?)";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, border_code);
 			rs = pstmt.executeQuery();

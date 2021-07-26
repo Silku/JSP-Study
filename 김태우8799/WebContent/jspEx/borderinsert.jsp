@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
         <main>
-            <form id="borderinsertform" method="post" action="borderinsert">
+            <form id="borderinsertform" method="post" action="borderinsert" enctype="multipart/form-data">
                 <article class="border_contain">
                     <div class="border_header"><h1><i class="fas fa-align-left" id="border_icon"></i> 게 시 글</h1></div>
                     <div class="border_body">
@@ -17,7 +17,9 @@
                                 <input type="hidden" name="user_name" value="${userBean.user_name }">
                                 <td>${userBean.user_name }</td>
                                 <th>첨부파일</th>
-                                <td>test</td>
+                                <td>
+                                	<input type="file" name ="file">
+                                </td>
                             </tr>
                         </table>
                         <div>
