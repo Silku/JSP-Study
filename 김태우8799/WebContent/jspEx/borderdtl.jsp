@@ -21,7 +21,7 @@
                         </tr>
                         <tr>
                             <th>첨부파일</th>
-                            <td colspan="3">test</td>
+                            <td colspan="3"><a download href="upload/${contentBean.border_file }">${contentBean.border_file }</a></td>
                         </tr>
                     </table>
                     <pre class ="border_content">${contentBean.border_content }</pre>

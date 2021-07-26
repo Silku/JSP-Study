@@ -20,7 +20,7 @@ public class BorderMgrPool {
 		try {
 			pool = DBConnectionMgr.getInstance();
 		}catch(Exception e) {
-			System.out.println("�삤瑜�: DBConnection Pool �떎�뙣.");
+			System.out.println("오류: DBConnection Pool 실패.");
 		}
 	}
 	
@@ -32,7 +32,7 @@ public class BorderMgrPool {
 		ArrayList<BorderDtlBean> list = new ArrayList<BorderDtlBean>();
 		try {
 			con = pool.getConnection();
-			sql = "select * from border_dtl order by border_code desc";
+			sql = "select border_code, border_title , border_content, border_file, writer_name, border_date, border_count from border_dtl order by border_code desc";
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
@@ -40,8 +40,9 @@ public class BorderMgrPool {
 				bean.setBorder_code(rs.getInt(1));
 				bean.setBorder_title(rs.getString(2));
 				bean.setBorder_content(rs.getString(3));
-				bean.setWriter_name(rs.getString(4));
-				bean.setWriter_ip(rs.getString(5));
+				bean.setBorder_file(rs.getString(4));
+				bean.setWriter_name(rs.getString(5));
+//				bean.setWriter_ip(rs.getString(6));
 				bean.setBorder_date(rs.getString(6));
 				bean.setBorder_count(rs.getInt(7));
 				list.add(bean);
@@ -70,10 +71,11 @@ public class BorderMgrPool {
 				bean.setBorder_code(rs.getInt(1));
 				bean.setBorder_title(rs.getString(2));
 				bean.setBorder_content(rs.getString(3));
-				bean.setWriter_name(rs.getString(4));
-				bean.setWriter_ip(rs.getString(5));
-				bean.setBorder_date(rs.getString(6));
-				bean.setBorder_count(rs.getInt(7));
+				bean.setBorder_file(rs.getString(4));
+				bean.setWriter_name(rs.getString(5));
+				bean.setWriter_ip(rs.getString(6));
+				bean.setBorder_date(rs.getString(7));
+				bean.setBorder_count(rs.getInt(8));
 			}
 		}catch (Exception e) {
 			e.printStackTrace();
@@ -139,12 +141,13 @@ public class BorderMgrPool {
 		
 		try {
 			con = pool.getConnection();
-			sql = "insert into border_dtl values(0, ?, ?, ?, ?, now(), 0 ,now(), now())";
+			sql = "insert into border_dtl values(0, ?, ?, ?, ?, ?, now(), 0 ,now(), now())";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, borderDtlBean.getBorder_title());
 			pstmt.setString(2, borderDtlBean.getBorder_content());
-			pstmt.setString(3, borderDtlBean.getWriter_name());
-			pstmt.setString(4, borderDtlBean.getWriter_ip());
+			pstmt.setString(3, borderDtlBean.getBorder_file());
+			pstmt.setString(4, borderDtlBean.getWriter_name());
+			pstmt.setString(5, borderDtlBean.getWriter_ip());
 			pstmt.executeUpdate();
 		}catch (Exception e) {
 			e.printStackTrace();

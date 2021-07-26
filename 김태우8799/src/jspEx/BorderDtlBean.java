@@ -4,10 +4,19 @@ public class BorderDtlBean {
 	private int border_code;
 	private String border_title;
 	private String border_content;
+	private String border_file;
 	private String writer_name;
 	private String writer_ip;
 	private String border_date;
 	private int border_count;
+	
+	
+	public String getBorder_file() {
+		return border_file;
+	}
+	public void setBorder_file(String border_file) {
+		this.border_file = border_file;
+	}
 	public int getBorder_code() {
 		return border_code;
 	}

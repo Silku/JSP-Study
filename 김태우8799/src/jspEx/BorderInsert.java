@@ -54,31 +54,34 @@ public class BorderInsert extends HttpServlet {
 		content_textarea = request.getParameter("content_textarea");
 			
 			if(request.getParameter("submitFlag") != null && request.getParameter("submitFlag").equals("true")) {
-				
 				// 아래부터 파일 인아웃풋 기능 구현 방법
-				Part filePart = request.getPart("file");
-				String fileName = filePart.getSubmittedFileName();
-				
-				InputStream fis = filePart.getInputStream();
-				String realPath = request.getServletContext().getRealPath("/jspEx/upload/");
-				File path = new File(realPath);
-				if(!path.exists()){
-					path.mkdirs();
-					//make directory
-				}
-				
-				String filePath = realPath +File.separator + fileName;
-				FileOutputStream fos = new FileOutputStream(filePath);
-				int size = 0;
-				byte[] buf = new byte[1024];
-				while((size =  fis.read(buf))!= -1) {
-					fos.write(buf, 0, size);
+			String fileName = null;
+				if(request.getPart("file") != null) {
+					Part filePart = request.getPart("file");
+					fileName = filePart.getSubmittedFileName();
+					
+					InputStream fis = filePart.getInputStream();
+					String realPath = request.getServletContext().getRealPath("/jspEx/upload/");
+					File path = new File(realPath);
+					if(!path.exists()){
+						path.mkdirs();
+						//make directory
+					}
+					
+					String filePath = realPath +File.separator + fileName;
+					FileOutputStream fos = new FileOutputStream(filePath);
+					int size = 0;
+					byte[] buf = new byte[1024];
+					while((size =  fis.read(buf))!= -1) {
+						fos.write(buf, 0, size);
+					}
 				}
 				
 				BorderDtlBean bean = new  BorderDtlBean();
 				bean.setBorder_title(border_title);
 				bean.setWriter_name(writer_name);
 				bean.setBorder_content(content_textarea);
+				bean.setBorder_file(fileName);
 				bean.setWriter_ip(request.getRemoteAddr());
 				
 				BorderMgrPool borderMgrPool = new BorderMgrPool();
