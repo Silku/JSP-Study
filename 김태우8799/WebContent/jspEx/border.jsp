@@ -60,6 +60,17 @@
                         <span><a href=border?page=${pageEnd-1 eq totalPage ? pageEnd : pageEnd+1}><i class="fas fa-angle-right"></i></a></span>
                         
                     </div>
+                    <div class="search">
+                    	<form method="get" action="borderSearch">
+                    	<select name="searchFilter">
+                    		<option value="all">전체</option>
+                    		<option value="title">제목</option>
+                    		<option value="content">내용</option>
+                    		<option value="writer">작성자</option>
+                    	</select>
+                    	<input type="search" name ="border_search"><button type ="submit">검색</button>
+                    	</form>
+                    </div>
                 </div>
 
             </article>

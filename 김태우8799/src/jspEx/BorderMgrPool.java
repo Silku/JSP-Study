@@ -23,6 +23,52 @@ public class BorderMgrPool {
 			System.out.println("오류: DBConnection Pool 실패.");
 		}
 	}
+	public ArrayList<BorderDtlBean> getBorderList(String filter, String search) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = null;
+		ArrayList<BorderDtlBean> list = new ArrayList<BorderDtlBean>();
+		try {
+			con = pool.getConnection();
+			if(filter.equals("title")) {
+				sql = "select border_code, border_title , border_content, border_file, writer_name, border_date, border_count from border_dtl where border_title like ? order by border_code desc";
+			}else if(filter.equals("content")) {
+				sql = "select border_code, border_title , border_content, border_file, writer_name, border_date, border_count from border_dtl where border_content like ?order by border_code desc";
+			}else if(filter.equals("writer")) {
+				sql = "select border_code, border_title , border_content, border_file, writer_name, border_date, border_count from border_dtl where writer_name like ?order by border_code desc";
+			}else {
+				sql = "select border_code, border_title , border_content, border_file, writer_name, border_date, border_count from border_dtl where border_title like ? or border_content like ? or writer_name like ? order by border_code desc";
+			}
+			
+			pstmt = con.prepareStatement(sql);
+			if(!filter.equals("all")) {
+				pstmt.setString(1, "%" + search +"%");
+			}else {
+				pstmt.setString(1, "%" + search +"%");
+				pstmt.setString(2, "%" + search +"%");
+				pstmt.setString(3, "%" + search +"%");
+			}
+			
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				BorderDtlBean bean = new BorderDtlBean();
+				bean.setBorder_code(rs.getInt(1));
+				bean.setBorder_title(rs.getString(2));
+				bean.setBorder_content(rs.getString(3));
+				bean.setBorder_file(rs.getString(4));
+				bean.setWriter_name(rs.getString(5));
+				bean.setBorder_date(rs.getString(6));
+				bean.setBorder_count(rs.getInt(7));
+				list.add(bean);
+			}
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			pool.freeConnection(con, pstmt, rs);
+		}
+		return list;
+	}
 	
 	public ArrayList<BorderDtlBean> getBorderList() {
 		Connection con = null;

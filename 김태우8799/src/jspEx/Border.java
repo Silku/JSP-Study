@@ -25,7 +25,14 @@ public class Border extends HttpServlet {
 		response.setContentType("text/html; charset=UTF-8");
 		BorderMgrPool borderMgrPool = new BorderMgrPool();
 		
-		ArrayList<BorderDtlBean> borderDtlList = borderMgrPool.getBorderList();
+		ArrayList<BorderDtlBean> borderDtlList = null;		
+		if(request.getAttribute("searchBorderList") == null) {
+			borderDtlList = borderMgrPool.getBorderList();
+		}else {
+			borderDtlList = (ArrayList<BorderDtlBean>)request.getAttribute("searchBorderList");
+		}
+		
+
 // mysql db에서 가져온 데이터 모든 갯수		
 		ArrayList<BorderDtlBean> borderList = new ArrayList<BorderDtlBean>();
 //	이 부분은 페이지당 게시물 갯수를 가져올 부분의 어레이리스트

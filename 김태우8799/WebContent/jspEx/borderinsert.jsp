@@ -19,6 +19,8 @@
                                 <th>첨부파일</th>
                                 <td>
                                 	<input type="file" name ="file">
+                                	<input type="file" name ="file">
+                                	<input type="file" name ="file">
                                 </td>
                             </tr>
                         </table>

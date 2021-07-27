@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Collection;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -21,7 +22,7 @@ import javax.servlet.http.Part;
 @MultipartConfig(
 		fileSizeThreshold = 1024*1024,
 		maxFileSize = 1024 * 1024 * 50,
-		maxRequestSize = 1024 * 1024 * 50 * 2
+		maxRequestSize = 1024 * 1024 * 50 * 5
 )
 @WebServlet("/jspEx/borderinsert")
 public class BorderInsert extends HttpServlet {
@@ -42,7 +43,6 @@ public class BorderInsert extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		
 
-		
 		String 	border_title = "",
 				writer_name = "",
 				content_textarea = "";
@@ -55,10 +55,20 @@ public class BorderInsert extends HttpServlet {
 			
 			if(request.getParameter("submitFlag") != null && request.getParameter("submitFlag").equals("true")) {
 				// 아래부터 파일 인아웃풋 기능 구현 방법
-			String fileName = null;
-				if(request.getPart("file") != null) {
-					Part filePart = request.getPart("file");
+				String fileName = null;
+					// 다중 파일다운로드 업로드/다운로드 구현
+				Collection<Part> parts = request.getParts();
+				StringBuilder builder = new StringBuilder();
+				for(Part p : parts) {
+					if(!p.getName().equals("file") || p.getSize() == 0){
+						continue;
+					}
+					Part filePart = p;
 					fileName = filePart.getSubmittedFileName();
+					
+					builder.append(fileName);
+					builder.append(",");
+					
 					
 					InputStream fis = filePart.getInputStream();
 					String realPath = request.getServletContext().getRealPath("/jspEx/upload/");
@@ -74,14 +84,18 @@ public class BorderInsert extends HttpServlet {
 					byte[] buf = new byte[1024];
 					while((size =  fis.read(buf))!= -1) {
 						fos.write(buf, 0, size);
-					}
+					}	
 				}
+					
+				//index는 0부터시작, 배열의 길이(length)는 1부터 시작. 그러므로 -1을해주면은 마지막껄 빼는게 된다고함.
+				builder.delete(builder.length()-1,builder.length());
+				
 				
 				BorderDtlBean bean = new  BorderDtlBean();
 				bean.setBorder_title(border_title);
 				bean.setWriter_name(writer_name);
 				bean.setBorder_content(content_textarea);
-				bean.setBorder_file(fileName);
+				bean.setBorder_file(builder.toString());
 				bean.setWriter_ip(request.getRemoteAddr());
 				
 				BorderMgrPool borderMgrPool = new BorderMgrPool();
@@ -89,9 +103,9 @@ public class BorderInsert extends HttpServlet {
 				if(insertFlag == true) {
 					response.sendRedirect("border");
 					return;
-//			   여기서 리턴 안해주면 아래 코드가 실행이되어 충돌이 날수있다고함.
+					//여기서 리턴 안해주면 아래 코드가 실행이되어 충돌이 날수있다고함.
 				}
-			}
+		}
 		
 		HttpSession session = request.getSession();
 		UserBean sessionBean = (UserBean)session.getAttribute("userBean");

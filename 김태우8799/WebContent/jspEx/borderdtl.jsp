@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
         <main>
             <article class="border_contain">
                 <div class="border_header"><h1><i class="fas fa-align-left" id="border_icon"></i> 게 시 글</h1></div>
@@ -21,7 +22,15 @@
                         </tr>
                         <tr>
                             <th>첨부파일</th>
-                            <td colspan="3"><a download href="upload/${contentBean.border_file }">${contentBean.border_file }</a></td>
+                            <td colspan="3">
+                            <!-- jstl활용한 복수파일 불러오기 -->
+                            <c:forTokens var ="fileName" items="${contentBean.border_file }" delims="," varStatus="st">
+                            <a download href="upload/${fileName }">${fileName }</a>
+                            <c:if test = "${not st.last }">
+                            /
+                            </c:if>
+                            </c:forTokens>
+                            </td>
                         </tr>
                     </table>
                     <pre class ="border_content">${contentBean.border_content }</pre>
