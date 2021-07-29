@@ -33,7 +33,7 @@ public class Border extends HttpServlet {
 		}
 		
 
-// 	mysql db에서 가져온 데이터 모든 갯수		깃테스트
+// 	mysql db에서 가져온 데이터 모든 갯수
 			ArrayList<BorderDtlBean> borderList = new ArrayList<BorderDtlBean>();
 //			이 부분은 페이지당 게시물 갯수를 가져올 부분의 어레이리스트
 			int totalListCount = borderDtlList.size();
